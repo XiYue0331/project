@@ -18,8 +18,11 @@ public interface CommodityDAO {
     @Select(value = "SELECT * FROM Commodity")
     List<Commodity> getAllCommodity();
 
-    @Select(value = "SELECT cid FROM Commodity WHERE Commodity.cid = #{cid}")
-    Commodity findCommodity();
+    @Select(value = "SELECT * FROM Commodity WHERE Commodity.cid = #{cid}")
+    Commodity findCommodity(Integer cid);
+
+    @Select(value = "SELECT * FROM Commodity WHERE quantity > #{quantity}")
+    List<Commodity> findLowStocks(Integer quantity);
 
     @Update(value = "UPDATE Commodity SET Commodity.price =  #{price} WHERE Commodity.cid = #{cid}")
     boolean updatePrice(Integer cid,double price);
