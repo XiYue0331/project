@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 public class Commodity {
-    private double cid; //商品编号
+    private int cid; //商品编号
     private String name;       //商品名称
     private double price;       //商品价格
     private int quantity;       //商品数量
@@ -15,7 +15,7 @@ public class Commodity {
         this.price = price;
     }
 
-    public double getCid() {
+    public int getCid() {
         return cid;
     }
 
@@ -31,7 +31,7 @@ public class Commodity {
         return name;
     }
 
-    public void setCid(double cid) {
+    public void setCid(int cid) {
         this.cid = cid;
     }
 
