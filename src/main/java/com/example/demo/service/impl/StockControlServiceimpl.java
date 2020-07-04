@@ -28,7 +28,7 @@ public class StockControlServiceimpl {
         }
     }
 
-    public int commodityObsolete(int cid){                  //淘汰重载，指输入cid
+    public int commodityObsolete(int cid){                  //淘汰重载，只输入cid
         Commodity stock = Cdao.findCommodity(cid);
         if(stock==null){
             return 0;
