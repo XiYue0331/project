@@ -6,26 +6,11 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
 import java.util.List;
 
 @Mapper
-public interface MemberDAO {
-    @Select(value = "SELECT * FROM Member")
-    List<Member> getAllMember();
-
-    @Insert(value = "INSERT INTO Member(Member.'mid',Member.'name',Member.'phone',Member.'score')\n" +
-                "VALUE(#{mid},#{name},#{phone},#{score})")
-    int insert(Member member);
-
-    @Update(value = "UPDATE Member SET Member.score =  #{score} WHERE Member.mid = #{mid}")
-    int updateScore(Integer mid, Integer score);
-
-    @Delete(value = "DELETE FROM Member WHERE mid = #{mid}")
-    int deleteMemb(Integer mid);                        //删除表中符合mid = deleteMemb函数形参的元组
-
-
-
-
+public interface MemberDAO extends JpaRepository<Member,Integer> {
 }

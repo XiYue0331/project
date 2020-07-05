@@ -13,5 +13,4 @@ import java.util.List;
 
 @Mapper
 public interface CommodityDAO extends JpaRepository<Commodity,Integer> {
-
 }

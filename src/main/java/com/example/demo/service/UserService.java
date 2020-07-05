@@ -13,9 +13,9 @@ import java.util.List;
 public interface UserService {
 
     List<User> getAllUser();
-
+    User getUserById(Integer id);
+    boolean deleteUser(Integer id);
     boolean insert(User user);
-
     boolean update(Integer uid,Integer salary);
 
 }

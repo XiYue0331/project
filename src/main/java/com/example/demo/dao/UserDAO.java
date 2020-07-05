@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -15,24 +16,5 @@ import java.util.List;
 * @create 2018-07-01 
 **/
 @Mapper
-public interface UserDAO {
-
-    @Select(value = "SELECT * FROM User")
-    List<User> getAllUser();
-
-    //查询User表中是否员工名字为name
-    @Select(value = "SELECT COUNT(name) FROM (SELECT name FROM User WHERE name = #{name} ) as a")
-    int selectName(String name);
-
-    @Insert(value = "INSERT INTO User(user.`uid`,user.`name`,user.identity,user.'salary')\n" +
-            "VALUE(#{uid},#{name},#{identity},#{salary})")
-    int insert(User user);
-
-    @Update(value = "UPDATE User SET User.salary = #{salary} WHERE user.uid = #{uid}")
-    int updateSalary(Integer uid,int salary);
-
-    @Delete(value = "DELETE FROM User WHERE uid= #{uid}")
-    int deleteUser(Integer uid);
-
-
+public interface UserDAO extends JpaRepository<User,Integer> {
 }

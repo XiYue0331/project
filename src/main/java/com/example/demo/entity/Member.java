@@ -2,7 +2,14 @@ package com.example.demo.entity;
 //会员实体类
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Member {
+    @Id
+    @GeneratedValue
     private Integer mid;
     private String name;
     private String phone;

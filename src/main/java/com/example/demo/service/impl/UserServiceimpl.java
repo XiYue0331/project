@@ -18,32 +18,36 @@ import java.util.List;
 public class UserServiceimpl implements UserService {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDAO uDAO;
 
     @Override
     public List<User> getAllUser() {
-        return userDAO.getAllUser();
+        return uDAO.findAll();
     }
 
+    @Override
+    public User getUserById(Integer id) {
+        return uDAO.findById(id).orElse(null);
+    }
 
+    @Override
+    public boolean deleteUser(Integer id) {
+        uDAO.deleteById(id);
+        return true;
+    }
 
     @Override
     public boolean insert(User user) {
-        if (null == user){
+        if(user!=null) {
+            uDAO.save(user);
+            return true;
+        }else{
             return false;
         }
-        // do something...
-        userDAO.insert(user);
-        return true;
     }
 
     @Override
-    public boolean update(Integer id, Integer salary) {
-        if ( null == id || null  == salary){
-            return false;
-        }
-        // do something...
-        userDAO.updateSalary(id,salary);
-        return true;
+    public boolean update(Integer uid, Integer salary) {
+        return false;
     }
 }
