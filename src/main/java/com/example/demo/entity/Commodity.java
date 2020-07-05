@@ -1,11 +1,19 @@
 package com.example.demo.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Commodity {
-    private int cid; //商品编号
+    @Id
+    @GeneratedValue
+    private Integer cid; //商品编号
     private String name;       //商品名称
-    private double price;       //商品价格
-    private int quantity;       //商品数量
-    private double discount;    //折扣
+    private Double price;       //商品价格
+    private Integer quantity;       //商品数量
+    private Double discount;    //折扣
 
     public double getPrice() {
         return price;

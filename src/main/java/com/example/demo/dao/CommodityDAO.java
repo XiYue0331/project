@@ -6,33 +6,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
 import java.util.List;
 
 @Mapper
-public interface CommodityDAO {
-    @Insert(value = "INSERT INTO Commodity VALUE(#{commodity.cid),#(commodity.name),#(commodity.price),#(commodity.quantity),#(commodity.discount)")
-    int insert(Commodity commodity);
+public interface CommodityDAO extends JpaRepository<Commodity,Integer> {
 
-    @Select(value = "SELECT * FROM Commodity")
-    List<Commodity> getAllCommodity();
-
-    @Select(value = "SELECT * FROM Commodity WHERE Commodity.cid = #{cid}")
-    Commodity findCommodity(Integer cid);
-
-    @Select(value = "SELECT * FROM Commodity WHERE quantity > #{quantity}")
-    List<Commodity> findLowStocks(Integer quantity);
-
-    @Update(value = "UPDATE Commodity SET Commodity.price =  #{price} WHERE Commodity.cid = #{cid}")
-    boolean updatePrice(Integer cid,double price);
-
-    @Update(value = "UPDATE Commodity SET Commodity.discount =  #{discount} WHERE Commodity.cid = #{cid}")
-    boolean updateDiscount(Integer cid,double discount);
-
-    @Update(value = "UPDATE Commodity SET Commodity.quantity =  #{quantity} WHERE Commodity.cid = #{cid}")
-    boolean updateQuantity(Integer cid,int quantity);
-
-    @Delete(value = "DELETE FROM Commodity WHERE mid = #{cid}")
-    int deleteCommodity(Integer cid);
 }

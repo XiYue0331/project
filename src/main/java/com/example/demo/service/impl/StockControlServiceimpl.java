@@ -2,42 +2,50 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.CommodityDAO;
 import com.example.demo.entity.Commodity;
+import com.example.demo.service.StockControlService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class StockControlServiceimpl {
+@Service
+public class StockControlServiceimpl implements StockControlService {
+
+    @Autowired
     private CommodityDAO Cdao;
 
-    public int commodityPurchase(Commodity goods){          //购入新货品
-        Commodity stock = Cdao.findCommodity(goods.getCid());
-        if(stock==null){
-            Cdao.insert(goods);
+    @Override
+    public int commodityUpdate(Commodity goods) {
+        return 0;
+    }
+
+    @Override
+    public int commodityInsert(Commodity goods) {
+        if(goods!=null) {
+            Cdao.save(goods);
             return 1;
         }else{
-            Cdao.updateQuantity(stock.getCid(),stock.getQuantity()+goods.getQuantity());
-            return 2;
-        }
-    }
-
-    public int commodityObsolete(Commodity goods){          //淘汰
-        Commodity stock = Cdao.findCommodity(goods.getCid());
-        if(stock==null){        //不存在该商品号的商品
             return 0;
-        }else{                  //存在
-            return Cdao.deleteCommodity(goods.getCid());
         }
     }
 
-    public int commodityObsolete(int cid){                  //淘汰重载，只输入cid
-        Commodity stock = Cdao.findCommodity(cid);
-        if(stock==null){
-            return 0;
-        }else{
-            return Cdao.deleteCommodity(cid);
-        }
+    @Override
+    public List<Commodity> getAllCommodity(Integer id) {
+        return Cdao.findAll();
     }
 
-    public List<Commodity> stockAnalyze(){
-            return Cdao.findLowStocks(10);
+    @Override
+    public Commodity getCommodityById(Integer id) {
+        return Cdao.findById(id).orElse(null);
     }
+
+    @Override
+    public int commodityDelete(Integer id) {
+        if(getCommodityById(id)!=null) {
+            Cdao.deleteById(id);
+            return 1;
+        }
+        return 0;
+    }
+
 }
