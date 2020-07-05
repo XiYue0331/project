@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
-
+/*
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 //该测试文件测试LoignService的登入账号验证
@@ -54,4 +54,4 @@ public class LoginServiceimplTest {
     }
 
 
-}
+}*/

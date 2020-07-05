@@ -9,7 +9,7 @@ import com.example.demo.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/*
 @Service
 public class RegisterServiceimpl implements RegisterService{
     @Autowired
@@ -45,4 +45,4 @@ public class RegisterServiceimpl implements RegisterService{
     }
 
 
-}
+}*/

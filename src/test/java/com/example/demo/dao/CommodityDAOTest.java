@@ -9,4 +9,5 @@ public class CommodityDAOTest {
     @Autowired
     private CommodityDAO commodityDAO;
 
+
 }

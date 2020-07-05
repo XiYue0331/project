@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
-
+/*
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class LoginDAOTest {
@@ -17,7 +17,7 @@ public class LoginDAOTest {
     private LoginDAO loginDAO;
 
     @Test
-    public void TestNotInDB(){
+    public void TesNotInDB(){
         assertEquals(0,loginDAO.findLogin(123456));
     }
 
@@ -25,4 +25,4 @@ public class LoginDAOTest {
 
 
 
-}
+}*/
